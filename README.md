@@ -8,7 +8,6 @@
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Screenshots](#screenshots)
-* [Setup](#setup)
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
@@ -26,9 +25,10 @@
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- Tech 1 - C#
+- Tech 2 - ASP. Net Core Web Api
+- Tech 3 - Entity Framework
+- Tech 4 - Microsoft SQL Server
 
 
 ## Features
