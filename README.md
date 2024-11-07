@@ -1,26 +1,62 @@
-# OnlineShoppingApp
+# Online Shopping App
 
-> Outline a brief description of your project.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
+> This project is a multi-layered ASP.NET Core Web API that enables customers to browse products, place orders, and manage account information. The application follows the Entity Framework Code First approach and leverages ASP.NET Core Identity for authentication and authorization, JWT for secure access control, and a clean Repository - UnitOfWork pattern.
 
 ## Table of Contents
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
-* [Features](#features)
 * [Screenshots](#screenshots)
-* [Usage](#usage)
+* [Setup](#setup)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
+- Project Layers
+Presentation Layer (API): Contains the controllers that handle HTTP requests.
+Business Layer: Manages business logic for the application.
+Data Access Layer: Handles database operations using Entity Framework (Repository - UnitOfWork).
+- Data Models
+User
+
+Id (int, primary key)
+FirstName (string)
+LastName (string)
+Email (string, unique)
+PhoneNumber (string)
+Password (string, encrypted with Data Protection)
+Role (enum - Admin or Customer for role-based access)
+Product
+
+Id (int, primary key)
+ProductName (string)
+Price (decimal)
+StockQuantity (int)
+Order
+
+Id (int, primary key)
+OrderDate (DateTime)
+TotalAmount (decimal)
+CustomerId (int, linked to User)
+OrderProduct
+
+OrderId (int)
+ProductId (int)
+Quantity (int)
+- Features
+Authentication and Authorization
+Uses ASP.NET Core Identity or a custom identity service for authentication. JWT is implemented for authorization, with roles for "Customer" and "Admin."
+- Model Validation
+Validates fields for both User and Product models, ensuring required fields, email format, and stock validation.
+- Action Filter
+Allows specific APIs to be accessible only within designated time periods.
+- Dependency Injection
+Manages services via dependency injection.
+- Data Protection
+Secures user passwords using Data Protection.
+- Global Exception Handling
+Captures all exceptions globally and returns appropriate error responses.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
@@ -31,56 +67,20 @@
 - Tech 4 - Microsoft SQL Server
 
 
-## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
-
-
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+<img width="954" alt="1" src="https://github.com/user-attachments/assets/b470ca0b-1915-490f-87d6-509aec1d9b6b">
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
-
-
-## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
+The project is used via Visual Studio. Requests are made via Swagger.
 
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
-
-
-## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-- Feature to be added 1
-- Feature to be added 2
-
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
+Project is: _in progress_ 
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by [https://www.linkedin.com/in/cemilozcan/] - feel free to contact me!
 
 
 <!-- Optional -->
