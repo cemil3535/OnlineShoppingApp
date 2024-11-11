@@ -12,6 +12,6 @@ namespace OnlineShoppingApp.WebApi.Models
 
         public List<int> ProductIds { get; set; }
 
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
     }
 }

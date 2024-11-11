@@ -39,6 +39,8 @@ namespace OnlineShoppingApp.Business.Operations.Product
             var productEntity = new ProductEntity
             {
                 ProductName = product.ProductName,
+                Price = product.Price,
+                StockQantity = product.StockQantity,
             };
 
             _repository.Add(productEntity);

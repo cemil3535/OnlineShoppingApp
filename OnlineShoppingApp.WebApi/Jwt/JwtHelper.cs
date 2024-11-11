@@ -22,7 +22,7 @@ namespace OnlineShoppingApp.WebApi.Jwt
                 new Claim(JwtClaimNames.Role, jwtInfo.Role.ToString()),
 
 
-                new Claim(ClaimTypes.Role, jwtInfo.Role.ToString()), // birinci rol degismeyecek baska yerden geldi
+                new Claim(ClaimTypes.Role, jwtInfo.Role.ToString()),
             };
 
             var expireTime = DateTime.Now.AddMinutes(jwtInfo.ExpireMinutes);

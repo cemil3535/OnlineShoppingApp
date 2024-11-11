@@ -18,14 +18,17 @@ namespace OnlineShoppingApp.Business.Operations.Order
         private readonly IRepository<OrderEntity> _orderRepository;
         private readonly IRepository<OrderProductEntity> _orderProductRepository;
 
-        private readonly IRepository<UserEntity> _userRepository;
 
-        public OrderManager(IUnitOfWork unitOfWork, IRepository<OrderEntity> orderRepository, IRepository<OrderProductEntity> orderProductRepository, IRepository<UserEntity> userRepository)
+        
+        //private readonly IRepository<UserEntity> _userRepository;
+
+        public OrderManager(IUnitOfWork unitOfWork, IRepository<OrderEntity> orderRepository, IRepository<OrderProductEntity> orderProductRepository)
         {
             _unitOfWork = unitOfWork;
             _orderRepository = orderRepository;
             _orderProductRepository = orderProductRepository;
-            _userRepository = userRepository; //silinecek
+            
+            
         }
 
         // AddOrder and Transation progress
@@ -36,9 +39,10 @@ namespace OnlineShoppingApp.Business.Operations.Order
             var orderEntity = new OrderEntity
             {
                 OrderDate = order.OrderDate,
-                TotalAmount = order.TotalAmount,
+                TotalAmount = order.TotalAmount,               
+                CustomerId = order.CustomerId,
                 
-                UserId = order.UserId,
+                
             };
 
             _orderRepository.Add(orderEntity);
@@ -60,9 +64,17 @@ namespace OnlineShoppingApp.Business.Operations.Order
                 {
                     OrderId = orderEntity.Id,
                     ProductId = productId,
+                    Quantity = order.Quantity
+                    
+                    
+                    
                 };
 
+                
+
                 _orderProductRepository.Add(orderProduct);
+
+                
             }
 
             try
@@ -207,7 +219,7 @@ namespace OnlineShoppingApp.Business.Operations.Order
 
             orderEntity.OrderDate = order.OrderDate;
             orderEntity.TotalAmount = order.TotalAmount;
-            orderEntity.UserId= order.UserId;
+            orderEntity.CustomerId= order.CustomerId;
 
             _orderRepository.Update(orderEntity);
 

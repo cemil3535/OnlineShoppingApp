@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineShoppingApp.Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,5 +20,7 @@ namespace OnlineShoppingApp.Business.Operations.User.Dtos
         public string PhoneNumber { get; set; }
 
         public string Password { get; set; }
+
+        public Role Role { get; set; }     
     }
 }

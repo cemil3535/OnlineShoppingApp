@@ -15,8 +15,8 @@ namespace OnlineShoppingApp.WebApi.Filters
         {
             var now = DateTime.Now.TimeOfDay;
 
-            StartTime = "23:00";
-            EndTime = "23:59";
+            StartTime = "20:00";
+            EndTime = "18:59";
 
             if (now >= TimeSpan.Parse(StartTime) && now <= TimeSpan.Parse(EndTime))
             {

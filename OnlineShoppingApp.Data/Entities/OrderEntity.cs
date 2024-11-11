@@ -14,11 +14,11 @@ namespace OnlineShoppingApp.Data.Entities
 
         public decimal TotalAmount { get; set; }
 
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
 
 
         // Relational Property
-        public UserEntity User { get; set; }   // DIKKAT bu olmaya bilir
+        public UserEntity Customer { get; set; } 
 
 
         // Relational Property

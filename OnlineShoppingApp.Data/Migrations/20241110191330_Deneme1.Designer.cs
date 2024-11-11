@@ -12,8 +12,8 @@ using OnlineShoppingApp.Data.Context;
 namespace OnlineShoppingApp.Data.Migrations
 {
     [DbContext(typeof(OnlineShoppingAppDbContext))]
-    [Migration("20241106084714_SettingEntityAdded")]
-    partial class SettingEntityAdded
+    [Migration("20241110191330_Deneme1")]
+    partial class Deneme1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace OnlineShoppingApp.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -48,12 +51,9 @@ namespace OnlineShoppingApp.Data.Migrations
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(16,2)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -201,13 +201,13 @@ namespace OnlineShoppingApp.Data.Migrations
 
             modelBuilder.Entity("OnlineShoppingApp.Data.Entities.OrderEntity", b =>
                 {
-                    b.HasOne("OnlineShoppingApp.Data.Entities.UserEntity", "User")
+                    b.HasOne("OnlineShoppingApp.Data.Entities.UserEntity", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("OnlineShoppingApp.Data.Entities.OrderProductEntity", b =>

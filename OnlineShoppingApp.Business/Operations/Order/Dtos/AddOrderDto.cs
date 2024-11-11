@@ -17,6 +17,8 @@ namespace OnlineShoppingApp.Business.Operations.Order.Dtos
 
         public List<int> ProductIds { get; set; }
 
-        public int UserId { get; set; }
+        public int CustomerId{ get; set; }
+
+        public int Quantity { get; set; } 
     }
 }

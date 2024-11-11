@@ -12,8 +12,8 @@ using OnlineShoppingApp.Data.Context;
 namespace OnlineShoppingApp.Data.Migrations
 {
     [DbContext(typeof(OnlineShoppingAppDbContext))]
-    [Migration("20241101192421_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241110220108_Deneme2")]
+    partial class Deneme2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,24 +36,24 @@ namespace OnlineShoppingApp.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("OrderDate")
+                    b.Property<DateTime?>("OrderDate")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("decimal(16,2)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -117,6 +117,40 @@ namespace OnlineShoppingApp.Data.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("OnlineShoppingApp.Data.Entities.SettingEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("MaintenenceMode")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Settings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            MaintenenceMode = false
+                        });
+                });
+
             modelBuilder.Entity("OnlineShoppingApp.Data.Entities.UserEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -167,13 +201,13 @@ namespace OnlineShoppingApp.Data.Migrations
 
             modelBuilder.Entity("OnlineShoppingApp.Data.Entities.OrderEntity", b =>
                 {
-                    b.HasOne("OnlineShoppingApp.Data.Entities.UserEntity", "User")
+                    b.HasOne("OnlineShoppingApp.Data.Entities.UserEntity", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("OnlineShoppingApp.Data.Entities.OrderProductEntity", b =>

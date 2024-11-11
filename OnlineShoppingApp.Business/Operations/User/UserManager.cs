@@ -51,7 +51,14 @@ namespace OnlineShoppingApp.Business.Operations.User
                 LastName = user.LastName,
                 Password = _protector.Protect(user.Password),
                 PhoneNumber = user.PhoneNumber,
-                Role = Role.Customer
+                Role = user.Role,
+
+                
+
+            
+
+                
+                   
             };
 
             _userRepository.Add(userEntity);

@@ -36,6 +36,7 @@ namespace OnlineShoppingApp.WebApi.Controllers
                 LastName = request.LastName,
                 Password = request.Password,
                 PhoneNumber = request.PhoneNumber,
+                Role = request.Role, 
             };
 
             var result = await _userService.AddUser(addUserDto);

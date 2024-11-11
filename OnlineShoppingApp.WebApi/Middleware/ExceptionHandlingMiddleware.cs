@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+﻿using System.Net;
+using Microsoft.AspNetCore.Http;
 using System;
-using System.Net;
-using System.Threading.Tasks;
 
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace OnlineShoppingApp.WebApi.Middleware
 {
-    //Global Exception operations
     public class ExceptionHandlingMiddleware
     {
         private readonly RequestDelegate _next;
@@ -31,17 +30,17 @@ namespace OnlineShoppingApp.WebApi.Middleware
 
         private Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
+            var response = new
+            {
+                StatusCode = (int)HttpStatusCode.InternalServerError,
+                Message = ex.Message,
+                Detail = ex.InnerException?.Message // Detaylı hata mesajı
+            };
+
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            var response = new
-            {
-                StatusCode = context.Response.StatusCode,
-                Message = "Beklenmedik bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-                Detailed = ex.Message // Bunu günlüğe kaydetmeyi düşünebilirsiniz, istemciye açığa çıkarmak yerine.
-            };
-
-            var jsonResponse = JsonConvert.SerializeObject(response);
+            var jsonResponse = JsonSerializer.Serialize(response);
             return context.Response.WriteAsync(jsonResponse);
         }
     }

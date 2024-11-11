@@ -15,6 +15,9 @@ namespace OnlineShoppingApp.Business.Operations.Order.Dtos
 
         public decimal TotalAmount {  get; set; }
 
+
         public List<OrderProductDto> Products { get; set; }
+
+        public int CustomerId { get; set; }
     }
 }

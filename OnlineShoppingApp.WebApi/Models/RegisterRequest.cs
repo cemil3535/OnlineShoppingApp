@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using OnlineShoppingApp.Data.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineShoppingApp.WebApi.Models
 {
@@ -20,6 +21,7 @@ namespace OnlineShoppingApp.WebApi.Models
 
         [Required]
         public string PhoneNumber { get; set; }
-        
+
+        public Role Role { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace OnlineShoppingApp.WebApi.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly IOrderService _orderService;
+        
+        
 
         public OrdersController(IOrderService orderService)
         {
@@ -51,14 +53,15 @@ namespace OnlineShoppingApp.WebApi.Controllers
 
         public async Task<IActionResult> AddOrder(AddOrderRequest request)
         {
-            throw new Exception("Bu bir test istisnasıdır. Global exception handling mekanizması icin yapilmistir"); // Test için kasıtlı hata.
+           
 
             var addorderDto = new AddOrderDto
             {
                 OrderDate = request.OrderDate,
                 TotalAmount = request.TotalAmount,
                 ProductIds = request.ProductIds,
-                UserId = request.UserId
+                CustomerId = request.CustomerId,
+                Quantity = request.Quantity,          
 
             };
 
@@ -119,7 +122,7 @@ namespace OnlineShoppingApp.WebApi.Controllers
                 Id = id,
                 OrderDate = request.OrderDate,
                 TotalAmount = request.TotalAmount,
-                UserId = request.UserId,
+                CustomerId = request.CustomerId
             };
 
             var result = await _orderService.UpdateOrder(updateOrderDto);
