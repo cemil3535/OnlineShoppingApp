@@ -122,7 +122,11 @@ namespace OnlineShoppingApp.WebApi.Controllers
                 Id = id,
                 OrderDate = request.OrderDate,
                 TotalAmount = request.TotalAmount,
-                CustomerId = request.CustomerId
+                CustomerId = request.CustomerId,
+                ProductIds = request.ProductIds,
+                Quantity = request.Quantity
+
+
             };
 
             var result = await _orderService.UpdateOrder(updateOrderDto);
@@ -130,7 +134,7 @@ namespace OnlineShoppingApp.WebApi.Controllers
             if (!result.IsSucceed)
                 return NotFound(result.Message);
             else
-                return await GetOrder(id);
+                return Ok();//await GetOrder(id);
         }
 
     }

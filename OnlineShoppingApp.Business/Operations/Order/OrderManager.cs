@@ -64,10 +64,7 @@ namespace OnlineShoppingApp.Business.Operations.Order
                 {
                     OrderId = orderEntity.Id,
                     ProductId = productId,
-                    Quantity = order.Quantity
-                    
-                    
-                    
+                    Quantity = order.Quantity                          
                 };
 
                 
@@ -130,6 +127,7 @@ namespace OnlineShoppingApp.Business.Operations.Order
             };
         }
 
+
         // DeleteOrder and catch exception
         public async Task<ServiceMessage> DeleteOrder(int id)
         {
@@ -162,6 +160,7 @@ namespace OnlineShoppingApp.Business.Operations.Order
             };
         }
 
+
         // I got id the orders
         public async Task<OrderDto> GetOrder(int id)
         {
@@ -180,6 +179,7 @@ namespace OnlineShoppingApp.Business.Operations.Order
 
             return order;
         }
+
 
         // I got all the orders
         public async Task<List<OrderDto>> GetOrders()
@@ -233,11 +233,14 @@ namespace OnlineShoppingApp.Business.Operations.Order
                 throw new Exception("Order bilgileri guncellenirken bir hata ile karsilasildi.");
             }
 
+
             var orderProducts = _orderProductRepository.GetAll(x => x.OrderId == x.OrderId).ToList();
+
             foreach (var orderProduct in orderProducts)
             {
                 _orderProductRepository.Delete(orderProduct,false);
             }
+
 
             foreach(var productId in order.ProductIds)
             {
@@ -245,10 +248,14 @@ namespace OnlineShoppingApp.Business.Operations.Order
                 {
                     OrderId = orderEntity.Id,
                     ProductId = productId,
+                    Quantity = order.Quantity
+                    
                 };
 
-                _orderProductRepository.Add(orderProduct);
+                _orderProductRepository.Add(orderProduct); 
+                
             }
+       
 
             try
             {

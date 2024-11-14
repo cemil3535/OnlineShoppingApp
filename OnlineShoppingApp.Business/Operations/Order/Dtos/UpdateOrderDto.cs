@@ -19,5 +19,7 @@ namespace OnlineShoppingApp.Business.Operations.Order.Dtos
         public List<int> ProductIds { get; set; } = new List<int>();
 
         public int CustomerId { get; set; }
+
+        public int Quantity { get; set; } 
     }
 }
