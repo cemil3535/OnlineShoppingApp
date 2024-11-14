@@ -6,9 +6,11 @@
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Screenshots](#screenshots)
+* [Database Diagrams](#database-diagrams)
 * [Setup](#setup)
 * [Project Status](#project-status)
 * [Contact](#contact)
+  
 <!-- * [License](#license) -->
 
 
@@ -71,6 +73,8 @@ Captures all exceptions globally and returns appropriate error responses.
 <img width="954" alt="1" src="https://github.com/user-attachments/assets/b470ca0b-1915-490f-87d6-509aec1d9b6b">
 <!-- If you have screenshots you'd like to share, include them here. -->
 
+## Database Diagrams
+<img width="691" alt="Ekran görüntüsü 14-11-2024 18 11 50" src="https://github.com/user-attachments/assets/24e797fc-7989-4700-8f8c-078090c3dc7e">
 
 ## Setup
 The project is used via Visual Studio. Requests are made via Swagger.
